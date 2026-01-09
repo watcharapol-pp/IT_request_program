@@ -1,6 +1,6 @@
 // pages/NewRequestForm.js
 
-const NewRequestForm = () => {
+const NewRequestForm = ({ requests, setRequests }) => {
     const { useState } = React;
     const navigate = ReactRouterDOM.useNavigate();
     const [popup, setPopup] = useState({ show: false, type: 'success', title: '', message: '', solution: '' });
@@ -33,6 +33,22 @@ const NewRequestForm = () => {
             });
             return;
         }
+
+        // Create new request
+        const newRequest = {
+            id: `#${String(Date.now()).slice(-5)}`,
+            item: formData.get('device-type'),
+            user: formData.get('requester'),
+            dept: formData.get('department'),
+            reason: reason,
+            date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+            status: 'Pending',
+            sColor: 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+            quantity: quantity
+        };
+
+        // Update requests state
+        setRequests([newRequest, ...requests]);
 
         // Success
         setPopup({

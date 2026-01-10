@@ -167,29 +167,34 @@ const App = () => {
             {isAuthenticated ? (
                 <div className="flex bg-background-light dark:bg-background-dark min-h-screen font-sans transition-colors duration-200">
                     {userRole === 'admin' && <Sidebar />}
-                    <Routes>
-                        {userRole === 'admin' ? (
-                            <React.Fragment>
-                                <Route path="/" element={<Dashboard />} />
-                                <Route path="/new-request" element={<NewRequestForm />} />
-                                <Route path="/request-status" element={<RequestStatus />} />
-                                <Route path="/approval" element={<ApprovalPage />} />
-                                <Route path="/user-management" element={<UserManagement />} />
-                                <Route path="/edit-user" element={<EditUser />} />
-                                <Route path="/new-regis-user" element={<NewRegisUser />} />
-                                <Route path="/profile" element={<ProfilePage onLogout={handleLogout} />} />
-                                <Route path="*" element={<Navigate to="/" replace />} />
-                            </React.Fragment>
-                        ) : (
-                            <React.Fragment>
-                                <Route path="/user/dashboard" element={<UserDashboard />} />
-                                <Route path="/user/new-request" element={<UserNewRequest />} />
-                                <Route path="/user/request/:id" element={<UserRequestDetails />} />
-                                <Route path="/user/profile" element={<UserProfile onLogout={handleLogout} />} />
-                                <Route path="*" element={<Navigate to="/user/dashboard" replace />} />
-                            </React.Fragment>
-                        )}
-                    </Routes>
+
+                    {/* Main Content Area */}
+                    <div className={`flex-1 ${userRole === 'user' ? 'flex items-center justify-center' : ''}`}>
+                        <Routes>
+                            {userRole === 'admin' ? (
+                                <React.Fragment>
+                                    <Route path="/" element={<Dashboard />} />
+                                    <Route path="/new-request" element={<NewRequestForm />} />
+                                    <Route path="/request-status" element={<RequestStatus />} />
+                                    <Route path="/approval" element={<ApprovalPage />} />
+                                    <Route path="/user-management" element={<UserManagement />} />
+                                    <Route path="/edit-user" element={<EditUser />} />
+                                    <Route path="/new-regis-user" element={<NewRegisUser />} />
+                                    <Route path="/profile" element={<ProfilePage onLogout={handleLogout} />} />
+                                    <Route path="*" element={<Navigate to="/" replace />} />
+                                </React.Fragment>
+                            ) : (
+                                <React.Fragment>
+                                    <Route path="/user/dashboard" element={<UserDashboard />} />
+                                    <Route path="/user/new-request" element={<UserNewRequest />} />
+                                    <Route path="/user/request/:id" element={<UserRequestDetails />} />
+                                    <Route path="/user/profile" element={<UserProfile onLogout={handleLogout} />} />
+                                    <Route path="*" element={<Navigate to="/user/dashboard" replace />} />
+                                </React.Fragment>
+                            )}
+                        </Routes>
+                    </div>
+
                     <ThemeToggle />
                 </div>
             ) : (

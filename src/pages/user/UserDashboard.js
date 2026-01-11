@@ -17,6 +17,7 @@ const UserDashboard = () => {
     const pendingRequests = requests.filter(r => r.status === 'Pending').length;
     const approvedRequests = requests.filter(r => r.status === 'Approved').length;
     const rejectedRequests = requests.filter(r => r.status === 'Rejected').length;
+    const cancelRequests = requests.filter(r => r.status === 'Cancelled').length;  
     
     // Get recent requests (last 5)
     const recentRequests = requests.slice(0, 5);
@@ -50,7 +51,7 @@ const UserDashboard = () => {
                         <div className="flex gap-3 w-full md:w-auto">
                             <button 
                                 onClick={() => navigate('/user/profile')} 
-                                className="flex-1 md:flex-none bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 flex items-center justify-center gap-2 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-600 transition-all"
+                                className="flex-1 md:flex-none bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 flex items-center justify-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 transition-all"
                             >
                                 <span className="material-icons-round text-lg">list_alt</span>
                                 <span>My Profile</span>
@@ -114,6 +115,19 @@ const UserDashboard = () => {
                                 </div>
                                 <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded-lg">
                                     <span className="material-icons-round text-red-600 dark:text-red-400 text-xl">cancel</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* cancel requests */}
+                        <div className="bg-white dark:bg-card-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                            <div className="flex items-center justify-between">
+                                <div>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Cancel</p>
+                                    <p className="text-3xl font-bold text-gray-600 dark:text-gray-400">{cancelRequests}</p>
+                                </div>
+                                <div className="p-3 bg-gray-100 dark:bg-gray-900/30 rounded-lg">
+                                    <span className="material-icons-round text-gray-600 dark:text-gray-400 text-xl">cancel</span>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +216,7 @@ const UserDashboard = () => {
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-right">
                                                     <button className="p-1.5 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                                                        <span className="material-icons-round text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-xl">visibility</span>
+                                                        <span className="material-icons-round text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-xl">more_vert</span>
                                                     </button>
                                                 </td>
                                             </tr>

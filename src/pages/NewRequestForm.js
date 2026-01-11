@@ -130,6 +130,9 @@ const NewRequestForm = ({ requests, setRequests }) => {
                                     <option>John Doe</option>
                                     <option>Jane Smith</option>
                                     <option>Alex Johnson</option>
+                                    <option>KimSoseon</option>
+                                    <option>AnuwannoSukangpharang</option>
+                                    <option>Chaiyaporn</option>
                                 </select>
                             </div>
                         </div>

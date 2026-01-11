@@ -6,6 +6,8 @@ const UserRequestDetails = () => {
     const { useState, useEffect } = React;
 
     const [showCancelConfirm, setShowCancelConfirm] = useState(false);
+    // const [showApproveConfirm, setShowApproveConfirm] = useState(false);
+    // const [showRejectConfirm, setShowRejectConfirm] = useState(false);
     const [request, setRequest] = useState(null);
 
     // Get request ID from URL
@@ -40,6 +42,12 @@ const UserRequestDetails = () => {
             if (cleanId === cleanUrlId) {
                 return { ...r, status: 'Cancelled', sColor: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
             }
+            if (cleanId === cleanUrlId) {
+                return { ...r, status: 'Approved', sColor: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
+            }
+            if (cleanId === cleanUrlId) {
+                return { ...r, status: 'Rejected', sColor: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
+            }
             return r;
         });
         
@@ -53,7 +61,67 @@ const UserRequestDetails = () => {
         });
         setRequest(updated);
         setShowCancelConfirm(false);
+    // };
+
+    // const handleApproveRequest = () => {
+    //     const savedRequests = JSON.parse(localStorage.getItem('itRequests') || '[]');
+    //     const updatedRequests = savedRequests.map(r => {
+    //         const cleanId = r.id.replace('#', '');
+    //         const cleanUrlId = urlId.replace('#', '');
+            
+    //         // if (cleanId === cleanUrlId) {
+    //         //     return { ...r, status: 'Cancelled', sColor: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
+    //         // }
+    //         if (cleanId === cleanUrlId) {
+    //             return { ...r, status: 'Approved', sColor: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
+    //         }
+    //         // if (cleanId === cleanUrlId) {
+    //         //     return { ...r, status: 'Rejected', sColor: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
+    //         // }
+    //         return r;
+    //     });
+        
+    //     localStorage.setItem('itRequests', JSON.stringify(updatedRequests));
+        
+    //     // Update local state
+    //     const updated = updatedRequests.find(r => {
+    //         const cleanId = r.id.replace('#', '');
+    //         const cleanUrlId = urlId.replace('#', '');
+    //         return cleanId === cleanUrlId;
+    //     });
+    //     setRequest(updated);
+    //     setShowApproveConfirm(false);
     };
+
+    // const handleRejectRequest = () => {
+    //     const savedRequests = JSON.parse(localStorage.getItem('itRequests') || '[]');
+    //     const updatedRequests = savedRequests.map(r => {
+    //         const cleanId = r.id.replace('#', '');
+    //         const cleanUrlId = urlId.replace('#', '');
+            
+    //         // if (cleanId === cleanUrlId) {
+    //         //     return { ...r, status: 'Cancelled', sColor: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
+    //         // }
+    //         // if (cleanId === cleanUrlId) {
+    //         //     return { ...r, status: 'Approved', sColor: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
+    //         // }
+    //         if (cleanId === cleanUrlId) {
+    //             return { ...r, status: 'Rejected', sColor: 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300' };
+    //         }
+    //         return r;
+    //     });
+        
+    //     localStorage.setItem('itRequests', JSON.stringify(updatedRequests));
+        
+    //     // Update local state
+    //     const updated = updatedRequests.find(r => {
+    //         const cleanId = r.id.replace('#', '');
+    //         const cleanUrlId = urlId.replace('#', '');
+    //         return cleanId === cleanUrlId;
+    //     });
+    //     setRequest(updated);
+    //     setShowRejectConfirm(false);
+    // };
 
     if (!request) {
         return (
@@ -188,6 +256,11 @@ const UserRequestDetails = () => {
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Request approved</p>
                                                 </div>
                                                 <div className="relative">
+                                                    <div className="absolute -left-[1.88rem] top-1 w-4 h-4 rounded-full bg-blue-600 ring-4 ring-white dark:ring-gray-800 animate-pulse"></div>
+                                                    <p className="text-sm font-bold text-gray-900 dark:text-white">In Review</p>
+                                                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Currently with Manager</p>
+                                                </div>
+                                                <div className="relative">
                                                     <div className="absolute -left-[1.88rem] top-1 w-4 h-4 rounded-full bg-blue-300 dark:bg-blue-700 ring-4 ring-white dark:ring-gray-800"></div>
                                                     <p className="text-sm font-bold text-gray-900 dark:text-white">Submitted</p>
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{request.date}</p>
@@ -199,7 +272,12 @@ const UserRequestDetails = () => {
                                                 <div className="relative">
                                                     <div className="absolute -left-[1.88rem] top-1 w-4 h-4 rounded-full bg-red-500 ring-4 ring-white dark:ring-gray-800"></div>
                                                     <p className="text-sm font-bold text-red-700 dark:text-red-400">Rejected</p>
-                                                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Request not approved</p>
+                                                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{request.date}</p>
+                                                </div>
+                                                <div className="relative">
+                                                    <div className="absolute -left-[1.88rem] top-1 w-4 h-4 rounded-full bg-red-500 ring-4 ring-white dark:ring-gray-800"></div>
+                                                    <p className="text-sm font-bold text-red-700 dark:text-red-400">In-review</p>
+                                                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Currently with Manager</p>
                                                 </div>
                                                 <div className="relative">
                                                     <div className="absolute -left-[1.88rem] top-1 w-4 h-4 rounded-full bg-blue-300 dark:bg-blue-700 ring-4 ring-white dark:ring-gray-800"></div>
@@ -223,7 +301,7 @@ const UserRequestDetails = () => {
                                             </React.Fragment>
                                         )}
                                     </div>
-                                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -232,7 +310,7 @@ const UserRequestDetails = () => {
                     <div className="bg-gray-50 dark:bg-gray-800/50 px-8 py-5 border-t border-gray-200 dark:border-gray-700 flex justify-between items-center">
                         {request.status === 'Pending' ? (
                             <button
-                                onClick={() => setShowCancelConfirm(true)}
+                                onClick={() => handleCancelRequest(true)}
                                 className="text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 text-sm font-bold flex items-center gap-2 transition-colors"
                             >
                                 <span className="material-icons-round text-lg">cancel</span>
@@ -285,6 +363,68 @@ const UserRequestDetails = () => {
                             </div>
                         </div>
                     )}
+                    {/* {showApproveConfirm && (
+                        <div className="absolute inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-6">
+                            <div className="bg-white dark:bg-card-dark rounded-2xl p-6 max-w-md w-full shadow-2xl border border-gray-200 dark:border-gray-700">
+                                <div className="flex items-start gap-4 mb-6">
+                                    <div className="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 shrink-0">
+                                        <span className="material-icons-round text-2xl">warning</span>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Approve Request?</h3>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                                            This action is permanent. You will need to submit a new request if you change your mind.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-3">
+                                    <button
+                                        onClick={() => setShowApproveConfirm(false)}
+                                        className="flex-1 py-3 bg-gray-100 dark:bg-gray-700 dark:text-white font-semibold rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                                    >
+                                        Keep It
+                                    </button>
+                                    <button
+                                        onClick={handleApproveRequest}
+                                        className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
+                                    >
+                                        Yes, Approve
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )} */}
+                    {/* {showRejectConfirm && (
+                        <div className="absolute inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-6">
+                            <div className="bg-white dark:bg-card-dark rounded-2xl p-6 max-w-md w-full shadow-2xl border border-gray-200 dark:border-gray-700">
+                                <div className="flex items-start gap-4 mb-6">
+                                    <div className="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400 shrink-0">
+                                        <span className="material-icons-round text-2xl">warning</span>
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Reject Request?</h3>
+                                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                                            This action is permanent. You will need to submit a new request if you change your mind.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-3">
+                                    <button
+                                        onClick={() => setShowRejectConfirm(false)}
+                                        className="flex-1 py-3 bg-gray-100 dark:bg-gray-700 dark:text-white font-semibold rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                                    >
+                                        Keep It
+                                    </button>
+                                    <button
+                                        onClick={handleRejectRequest}
+                                        className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
+                                    >
+                                        Yes, Reject
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )} */}
                 </div>
             </div>
         </div>

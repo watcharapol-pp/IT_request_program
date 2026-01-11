@@ -54,7 +54,7 @@ const UserProfile = ({ onLogout }) => {
                     </div>
                     <button
                         onClick={() => navigate('/user/dashboard')}
-                        className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm font-medium flex items-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
+                        className="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-100 flex items-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-600 hover:text-gray-900 dark:hover:text-white transition-colors"
                     >
                         <span className="material-icons-round text-lg">dashboard</span>
                         <span>Dashboard</span>
@@ -80,11 +80,11 @@ const UserProfile = ({ onLogout }) => {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className="pt-14 pb-6 px-6 text-center">
                             <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-1">{formData.fullName}</h2>
                             <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Senior Software Engineer</p>
-                            
+
                             <div className="space-y-2 mb-6">
                                 <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                                     <span className="material-icons-round text-gray-400 text-base">business</span>
@@ -138,11 +138,11 @@ const UserProfile = ({ onLogout }) => {
                                 <span className="material-icons-round text-blue-600 dark:text-blue-400 text-xl">badge</span>
                                 <h3 className="text-lg font-bold text-gray-900 dark:text-white">Personal Information</h3>
                             </div>
-                            <button className="text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 font-medium">
+                            {/* <button className="text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 font-medium">
                                 Edit
-                            </button>
+                            </button> */}
                         </div>
-                        
+
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">
@@ -218,7 +218,7 @@ const UserProfile = ({ onLogout }) => {
                             <span className="material-icons-round text-blue-600 dark:text-blue-400 text-xl">notifications</span>
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white">Notification Preferences</h3>
                         </div>
-                        
+
                         <div className="space-y-4">
                             <div className="flex items-start gap-4">
                                 <input

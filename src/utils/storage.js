@@ -46,7 +46,8 @@ const StorageHelper = {
         const statusColors = {
             'Approved': 'bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400',
             'Rejected': 'bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-            'Pending': 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+            'Pending': 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+            'Cancelled': 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
         };
         
         const updatedRequests = requests.map(req => 
@@ -72,7 +73,8 @@ const StorageHelper = {
             total: requests.length,
             pending: requests.filter(r => r.status === 'Pending').length,
             approved: requests.filter(r => r.status === 'Approved').length,
-            rejected: requests.filter(r => r.status === 'Rejected').length
+            rejected: requests.filter(r => r.status === 'Rejected').length,
+            cancel: requests.filter(r => r.status === 'Cancelled').length
         };
     },
     

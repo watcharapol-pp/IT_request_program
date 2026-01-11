@@ -5,11 +5,11 @@ const Login = ({ onLogin }) => {
 
     const users = {
         'admin@company.com': { password: 'admin123', role: 'admin' },
-        'EMP-ADMIN': { password: 'admin123', role: 'admin' },
+        'EMP-ADMIN': { password: 'a123', role: 'admin' },
         'EMP-ADMIN2': { password: 'admin123', role: 'admin' },
         'user@company.com': { password: 'user123', role: 'user' },
         'john.doe@company.com': { password: 'user123', role: 'user' },
-        'EMP-001': { password: 'user123', role: 'user' }
+        'EMP-001': { password: 'u123', role: 'user' }
     };
 
     const [loginType, setLoginType] = useState('email');
@@ -149,8 +149,8 @@ const Login = ({ onLogin }) => {
                         <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
                             <p className="text-xs text-gray-500 text-center mb-3">Demo Accounts</p>
                             <div className="text-[11px] text-gray-400 dark:text-gray-500 space-y-1.5 bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3">
-                                <div><strong>Admin:</strong> admin@company.com / admin123</div>
-                                <div><strong>User:</strong> user@company.com / user123</div>
+                                <div><strong>Admin:</strong> EMP-ADMIN / a123</div>
+                                <div><strong>User:</strong> EMP-001 / u123</div>
                             </div>
                         </div>
                     </form>
